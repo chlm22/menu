@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="logo">Your Logo</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div class="menu-container">
+            <div class="menu-items">
+                <div class="menu-item" data-image="images/AdobeStock_47513460_Preview.jpeg">Item 1</div>
+                <div class="menu-item" data-image="item2.jpg">Item 2</div>
+                <div class="menu-item" data-image="item3.jpg">Item 3</div>
+                <div class="menu-item" data-image="item4.jpg">Item 4</div>
+                <div class="menu-item" data-image="item5.jpg">Item 5</div>
+            </div>
+            <div id="image-container"></div> <!-- Container for displaying images -->
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const menuItems = document.querySelectorAll(".menu-item");
+            const imageContainer = document.getElementById("image-container");
+
+            // Function to display default image
+            function displayDefaultImage() {
+                const defaultItem = menuItems[0]; // Get the first menu item
+                const defaultImagePath = defaultItem.getAttribute("data-image");
+                const defaultImageElement = document.createElement("img");
+                defaultImageElement.src = defaultImagePath;
+                defaultImageElement.classList.add("menu-image");
+
+                // Clear previous image
+                imageContainer.innerHTML = "";
+
+                // Append default image
+                imageContainer.appendChild(defaultImageElement);
+            }
+
+            // Display default image on page load
+            displayDefaultImage();
+
+            // Add click event listeners to menu items
+            menuItems.forEach(item => {
+                item.addEventListener("click", function() {
+                    const imagePath = this.getAttribute("data-image");
+                    const imageElement = document.createElement("img");
+                    imageElement.src = imagePath;
+                    imageElement.classList.add("menu-image");
+
+                    // Clear previous image
+                    imageContainer.innerHTML = "";
+
+                    // Append new image
+                    imageContainer.appendChild(imageElement);
+                });
+            });
+        });
+    </script>
+    <footer>
+        <div class="fixed-text">Korean Market</div>
+    </footer>
+</body>
+</html>
