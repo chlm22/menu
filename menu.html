@@ -26,7 +26,7 @@
                 <div class="menu-item" data-image="item4.jpg">Item 4</div>
                 <div class="menu-item" data-image="item5.jpg">Item 5</div>
             </div>
-            <div id="image-container"></div> <!-- Container for displaying images -->
+            <div id="image-container"></div> 
         </div>
     </main>
 
@@ -35,25 +35,23 @@
             const menuItems = document.querySelectorAll(".menu-item");
             const imageContainer = document.getElementById("image-container");
 
-            // Function to display default image
             function displayDefaultImage() {
-                const defaultItem = menuItems[0]; // Get the first menu item
+                const defaultItem = menuItems[0];
                 const defaultImagePath = defaultItem.getAttribute("data-image");
                 const defaultImageElement = document.createElement("img");
                 defaultImageElement.src = defaultImagePath;
                 defaultImageElement.classList.add("menu-image");
 
-                // Clear previous image
+
                 imageContainer.innerHTML = "";
 
-                // Append default image
                 imageContainer.appendChild(defaultImageElement);
             }
 
-            // Display default image on page load
+
             displayDefaultImage();
 
-            // Add click event listeners to menu items
+          
             menuItems.forEach(item => {
                 item.addEventListener("click", function() {
                     const imagePath = this.getAttribute("data-image");
@@ -61,10 +59,9 @@
                     imageElement.src = imagePath;
                     imageElement.classList.add("menu-image");
 
-                    // Clear previous image
                     imageContainer.innerHTML = "";
 
-                    // Append new image
+ 
                     imageContainer.appendChild(imageElement);
                 });
             });

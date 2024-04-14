@@ -19,8 +19,15 @@
     </header>
     <main>
         <section class="imgbox">
-            <!-- Large image filling the whole page -->
-            <img src="images/AdobeStock_706910583_Preview.jpeg" alt="Large Image">
+            <div class="slider">
+                <img src="images/AdobeStock_706910583_Preview.jpeg" alt="Large Image" class="slide">
+                <img src="images/AdobeStock_580544391_Preview.jpeg" alt="Image 1" class="slide">
+                <img src="images/AdobeStock_579655926_Preview.jpeg" alt="Image 2" class="slide">
+            </div>
+            /*remove*/
+            <button class="prev">&#10094;</button>
+            <button class="next">&#10095;</button>
+            /*remove*/
         </section>
         <section class="description">
             <div class="text">
@@ -29,10 +36,9 @@
                     In eu risus lacinia, semper purus quis, aliquet odio. Cras nec turpis ac sapien porta cursus a non urna. Pellentesque mattis lorem vitae mauris pulvinar accumsan. Sed accumsan quis velit eu tincidunt. Phasellus accumsan dui non molestie egestas. Curabitur ultricies ligula ut ipsum tempus, sed consequat nisl porta. Aenean bibendum euismod quam eu viverra.
                     about menu
                     contact
-                      </p>
+                </p>
             </div>
             <div class="images">
-                <!-- Two images stacked on top of each other -->
                 <img src="images/AdobeStock_580544391_Preview.jpeg" alt="Image 1">
                 <img src="images/AdobeStock_579655926_Preview.jpeg" alt="Image 2">
             </div>
@@ -41,5 +47,37 @@
     <footer>
         <div class="fixed-text">Korean Market</div>
     </footer>
+    <script>
+let slideIndex = 0;
+showSlides();
+
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides() {
+  let i;
+  let slides = document.getElementsByClassName("slide");
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";  
+  }
+  slideIndex++;
+  if (slideIndex > slides.length) {slideIndex = 1}    
+  slides[slideIndex-1].style.display = "block";  
+  setTimeout(showSlides, 5000);
+}
+/*remove */
+document.querySelector('.prev').addEventListener('click', function() {
+    plusSlides(-1);
+});
+document.querySelector('.next').addEventListener('click', function() {
+    plusSlides(1);
+}); 
+/*remove */
+    </script>
 </body>
 </html>
